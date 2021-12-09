@@ -1,0 +1,11 @@
+sup, .t-c span{
+    color: red;
+}
+.bigSize{
+    font-size: 24px;
+    font-weight: 900;
+    margin-right: 10px;
+}
+.t-c li{
+    list-style: none;
+}

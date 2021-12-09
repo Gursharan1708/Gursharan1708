@@ -1,0 +1,152 @@
+<html>
+  <head>
+    <title>Rewwide calculations</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+    <link href="/img/favicon.png" rel="icon">
+  </head>
+  <body>
+    <div id="Calculation" class="container">
+      <div class="row">
+        <div class="col-md-6 p-5">
+          <h1>Calculation 1</h1>
+            <div class="form-group">
+                <label class="form-label upper" for="Website Charges" >Subscription Packages</label> 
+                <select id="packname" class="form-control mb-3">
+                    <option hidden>Please Select One</option>
+                    <option value='{"webCharges":1000,"Catalog":400,"promo":1000,"serviceCharges":1500}'>3 Month Subscrition</option>
+                    <option value='{"webCharges":1000,"Catalog":700,"promo":1500,"serviceCharges":1500}'>6 Month Subscrition</option>
+                    <option value='{"webCharges":1000,"Catalog":1000,"promo":2000,"serviceCharges":1500}'>1 year Subscrition</option>
+                  </select>
+            </div>
+          <form id="calc1">
+             <!-- Email input -->
+                <div class="form-outline row">
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Website Charges" >Website Charges<sup>#</sup></label>
+                    <input type="text" id="webCharges" class="form-control packAdd" readonly required/>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Catalog Management" >Catalog Management<sup>#</sup></label>
+                    <input type="text" id="Catalog" class="form-control packAdd" readonly required/>
+                  </div>                  
+                </div>
+                 <div class="form-outline row">
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Promotional Charges" >Promotional Charges<sup>#</sup></label>
+                    <input type="text" id="promo" class="form-control packAdd" readonly required />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Service Charges" >Service Charges<sup>#</sup></label>
+                    <input type="text" id="serviceCharges" class="form-control packAdd" readonly required/>
+                  </div>                  
+                </div>
+               
+                  <div class="form-outline row">
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="GST/VAT" >GST/VAT<sup>*</sup></label>
+                    <input type="text" id="gst" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="PG Charges">PG Charges<sup>*</sup></label>
+                    <input type="text" id="pg" class="form-control" />
+                  </div>                  
+                </div>
+                 <div class="form-outline row">
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Logistics Charges (SP-API)" >Logistics Charges <sup>*</sup></label>
+                    <input type="text" id="logistic" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Admin Charges">Admin Charges<sup>*</sup></label>
+                    <input type="text" id="adminCharges" class="form-control" />
+                  </div>                  
+                </div>
+             <input type="submit" class="btn btn-primary" value="Calculate">
+          </form>
+            <div class="group d-flex align-items-center">
+                  <label class="form-label bigSize" for="Admin Charges">Net Amount</span> :</label>
+                  <h3 id="total1"></h3>
+            </div>
+           <div class="group d-flex align-items-center">
+                <label class="form-label bigSize" for="Admin Charges">Total <span>(Including Tax)</span> :</label>
+                <h3 id="totalWithTax"></h3>
+            </div> 
+               
+        </div>
+        <div class="col-md-6 p-5">
+          <h1>Calculation 2</h1>
+          <form id="calc2">
+                 <div class="form-outline row">
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Website Charges" >Direct Sale<sup>##</sup></label>
+                    <input type="text" id="directSales" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Catalog Management">Affiliate Sale<sup>##</sup></label>
+                    <input type="text" id="affiliateSales" class="form-control" />
+                  </div>                  
+                </div>
+                <button type="submit" class="btn btn-primary">Calculate</button>
+              </form>
+                <div class="form-outline row">
+                  <div class="form-group col-md-12">
+                    <label class="form-label upper" for="Website Charges" >Total Sale</label>
+                    <input type="text" id="totalSale" class="form-control" readonly/>
+                  </div>
+                </div>
+                 <div class="form-outline row">
+                    <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Catalog Management">Qualification Range</label>
+                    <input type="text" id="qualify" class="form-control" readonly/>
+                    <progress id="progressBAr" value="0" max="1000000"></progress>
+                  </div>  
+
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Promotional Charges" >Sale Level</label>
+                    <input type="text" id="saleLevel" class="form-control" readonly/>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Service Charges">Discribution commission <sup>**</sup></label>
+                    <input type="text" id="dComm" class="form-control" readonly/>
+                  </div>                  
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="Service Charges">Discribution Amount</label>
+                    <input type="text" id="dAmt" class="form-control" readonly/>
+                  </div>                  
+                </div>
+                     <div class="form-outline row">
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="GST/VAT" >Reward Commission/Wallet</label>
+                    <input type="text" id="reward" class="form-control" readonly/>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="form-label upper" for="PG Charges">Wallet Amt(in Miles)</label>
+                    <input type="text" id="mile" class="form-control" readonly/>
+                  </div>                  
+                </div>
+                <!-- Submit button -->
+        </div>
+      </div>
+      <hr> 
+      <div class="row">
+        <div class="col-md-6">
+            <ul class="t-c">
+              <li><span>#</span> - Fixed Values according to Package</li>
+              <li><span>*</span> - Value can be change according to city, state, country (in %) </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+             <ul class="t-c">
+              <li><span>##</span> - Values from Database</li>
+              <li><span>**</span> - Changes according to level (in %)</li>
+            </ul>
+        </div>
+      </div>       
+    </div>
+  </body>
+</html>
